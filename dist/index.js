@@ -79,23 +79,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__module_VueEvent__ = __webpack_require__(2);
 
 
-console.log('initialising vue event');
 var VueEvent = {
 	install: function install(Vue) {
 		var eventHandler = new __WEBPACK_IMPORTED_MODULE_0__module_VueEvent__["a" /* default */]();
-		Vue.prototype.$fire = function (event) {
-			for (var _len = arguments.length, params = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-				params[_key - 1] = arguments[_key];
-			}
+		Vue.prototype.$bus = {
+			emit: function emit(event) {
+				for (var _len = arguments.length, params = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+					params[_key - 1] = arguments[_key];
+				}
 
-			eventHandler.emit.apply(eventHandler, [event].concat(params));
-		};
-		Vue.prototype.$listen = function (event) {
-			for (var _len2 = arguments.length, params = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-				params[_key2 - 1] = arguments[_key2];
-			}
+				eventHandler.emit.apply(eventHandler, [event].concat(params));
+			},
+			on: function on(event) {
+				for (var _len2 = arguments.length, params = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+					params[_key2 - 1] = arguments[_key2];
+				}
 
-			eventHandler.on.apply(eventHandler, [event].concat(params));
+				eventHandler.on.apply(eventHandler, [event].concat(params));
+			}
 		};
 	}
 };
