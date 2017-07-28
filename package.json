@@ -2,10 +2,21 @@
   "name": "vue-event",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/app.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "NODE_ENV=development webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.1.10",
+    "vue-resource": "^1.0.3"
+  },
+  "devDependencies": {
+    "laravel-mix": "^1.4.2"
+  }
 }
